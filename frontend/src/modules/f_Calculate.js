@@ -5,37 +5,36 @@ export function load_f_Calculate() {
   console.log("f_Calculate.js wurde geladen");
 }
 
-export function calculate(numbers) {
+export function calculate(number1, number2) {
   try {
-    const operator = localStorage.getItem("calculatorOperator");
+    let operator = localStorage.getItem("calculatorOperator");
 
+    // Überprüfen ob operator nicht null oder undefined ist
     if (operator != null) {
-      const operations = {
-        "+": (a, b) => a + b,
-        "-": (a, b) => a - b,
-        "*": (a, b) => a * b,
-        "/": (a, b) => a / b,
-      };
+      let result;
 
-      const operationFunction = operations[operator];
+      switch (operator) {
+        case "+":
+          result = number1 + number2;
+          break;
 
-      if (operationFunction) {
+        case "-":
+          result = number1 - number2;
+          break;
 
-        const number1 = parseFloat(numbers[0]);
-        const number2 = parseFloat(numbers[1]);
+        case "*":
+          result = number1 * number2;
+          break;
 
-        if (!isNaN(number1) && !isNaN(number2)) {
-          const result = operationFunction(number1, number2);
-        }
-        // const result = numbers.reduce((acc,num) => operationFunction(acc,num));
-        if (!isNaN(result)) {
-          displayResult(result);
-        } else {
-          console.log("Das Ergebnis ist keine Zahl.");
-        }
-      }else{
-        console.log("Der Operator ist nicht vorhanden.");
-      } 
+        case "/":
+          result = number1 / number2;
+          break;
+
+        default:
+          break;
+      }
+
+      displayResult(result);
     } else {
       console.log("Der Operator ist nicht im localStorage vorhanden.");
     }
@@ -46,4 +45,3 @@ export function calculate(numbers) {
 
   console.log("calculate wurde aufgerufen");
 }
-

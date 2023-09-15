@@ -1,7 +1,5 @@
 console.log("index.js wird geladen");
 
-// import "/frontend/src/styles/style.css";
-
 // Function Get Value 1 (f_getValue1.js)
 //✅
 import { load_f_getValue1 } from "/frontend/src/modules/f_getValue1.js";
@@ -54,12 +52,8 @@ load_f_clickCalculate();
 
 document.getElementById("calculate").addEventListener("click", function () {
   console.log("INDEX Value 1:", getValue1());
-  const value1 = getValue1();
   console.log("INDEX Value 2:", getValue2());
-  const value2 = getValue2();
 
-  const numbers = [value1, value2];
-  calculate(numbers);
   let result = calculate(parseFloat(getValue1()), parseFloat(getValue2()));
 });
 
